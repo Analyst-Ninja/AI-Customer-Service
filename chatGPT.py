@@ -1,7 +1,7 @@
 import openai
 
 # Define OpenAI API key 
-openai.api_key = "YOUR_API_KEY"
+openai.api_key = "Your_API_KEY"
 
 def interaction_type(prompt):
         
@@ -11,7 +11,7 @@ def interaction_type(prompt):
     1. Query
     2. Feedback
     3. Request
-    4. Interaction'''
+    4. Complaint'''
 
     # Generate a response
     completion = openai.Completion.create(
