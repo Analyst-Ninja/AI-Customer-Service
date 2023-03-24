@@ -2,6 +2,7 @@
 import mongodb_conn
 import voice_input
 import os
+from datetime import datetime
 # 800789001
 if __name__ == '__main__':
     # Step 1 : ------------------------- Showing Customer Details--------------------------------
@@ -20,5 +21,20 @@ if __name__ == '__main__':
     # Step 2 : ------------------------- Taking the Voice Input from customer -------------------
     remark, audio_file = voice_input.voice_in()
     
-    # Step 3 : 
+    # Step 3 : ---------------------------Populating the interaction data in Interaction Table ------
+
+    now = datetime.now()
+
+    insert_these = [{'Customer ID':customer_details['Customer ID'],
+                     'Customer Name':customer_details['Customer Name'], 
+                     'Mobile Number':customer_details['Mobile Number'],
+                     'Email':customer_details['Email'],
+                     'voice_text' : remark,
+                     'binary_audio' : audio_file,
+                     'etl_insert_date':now
+                     }]
+
+    mongodb_conn.interaction_collection.insert_many(insert_these)
+
+    
     

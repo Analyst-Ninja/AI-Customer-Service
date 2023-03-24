@@ -26,5 +26,6 @@ def cust_onboard():
 
 cust_onboard()
 
+
     
     # return onboarding_cust_name, onboarding_cust_dob, onboarding_cust_mob, onboarding_cust_email, onboarding_cust_address, onboarding_cust_acct_type, onboarding_cust_acct_sub_type

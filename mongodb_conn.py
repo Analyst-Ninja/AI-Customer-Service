@@ -4,6 +4,7 @@ import pymongo
 client = pymongo.MongoClient("mongodb://localhost:27017")
 db = client['AICS_data']
 gam_collection = db.collection['gen_acct_mast_table']
+interaction_collection = db.collection['customer_interaction_table']
 # function for showing the customer demographic details
 
 # def gam_conn(cust_id):
@@ -57,6 +58,10 @@ def gam_conn(field,param):
 def gam_conn_find(a):
     b=gam_collection.find_one({'Customer ID':a})
     return b
+
+
+
+
 
 
 
