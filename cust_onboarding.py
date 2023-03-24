@@ -17,10 +17,16 @@ def cust_onboard():
     cust_id = mongodb_conn.gam_collection.find().sort("Customer ID", 1).limit(1)[0]["Customer ID"] - 1
     now = datetime.now()
 
-    insert_these = [{'Customer Name':onboarding_cust_name,'Customer DOB':onboarding_cust_dob
-    ,'Account Number':acct_num, 'Scheme Type':onboarding_cust_acct_type, 'Scheme Code': onboarding_cust_acct_sub_type,
-    'Mobile Number':onboarding_cust_mob, 'Email':onboarding_cust_email,'Address':onboarding_cust_address,
-    'insert date':now,'Customer ID':cust_id}]
+    insert_these = [{'Customer Name':onboarding_cust_name,
+                     'Customer DOB':onboarding_cust_dob,
+                     'Account Number':acct_num, 
+                     'Scheme Type':onboarding_cust_acct_type,
+                     'Scheme Code': onboarding_cust_acct_sub_type,
+                     'Mobile Number':onboarding_cust_mob,
+                     'Email':onboarding_cust_email,
+                     'Address':onboarding_cust_address,
+                     'insert date':now,
+                     'Customer ID':cust_id}]
 
     mongodb_conn.gam_collection.insert_many(insert_these)
 

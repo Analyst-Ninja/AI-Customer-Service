@@ -3,6 +3,7 @@ import mongodb_conn
 import voice_input
 import os
 from datetime import datetime
+import chatGPT
 # 800789001
 if __name__ == '__main__':
     # Step 1 : ------------------------- Showing Customer Details--------------------------------
@@ -20,8 +21,12 @@ if __name__ == '__main__':
 
     # Step 2 : ------------------------- Taking the Voice Input from customer -------------------
     remark, audio_file = voice_input.voice_in()
-    
-    # Step 3 : ---------------------------Populating the interaction data in Interaction Table ------
+
+    # Step 3 : --------------------Processing the Query Type with the help of chatGPT------------
+
+    interaction_type = chatGPT.interaction_type(remark) 
+
+    # Step 4 : ---------------------------Populating the interaction data in Interaction Table ------
 
     now = datetime.now()
 
@@ -29,6 +34,7 @@ if __name__ == '__main__':
                      'Customer Name':customer_details['Customer Name'], 
                      'Mobile Number':customer_details['Mobile Number'],
                      'Email':customer_details['Email'],
+                     'Interaction Type' : interaction_type,
                      'voice_text' : remark,
                      'binary_audio' : audio_file,
                      'etl_insert_date':now
